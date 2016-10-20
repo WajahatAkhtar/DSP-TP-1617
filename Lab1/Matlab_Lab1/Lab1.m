@@ -65,14 +65,11 @@ function y3 =  ramp(a,n,N) %Function Defination
             
             s = zeros(1,N);  % 
             
-            for j = n+1:N
-            s(j) = 1;
+            for j = n:N
+            s(j) = a*(j-n);
             end
             
-            for j = n+2:N
-            s(j) = s(j-1)+s(j);
-            end
-            
+          
             
             y3 = s;
             
