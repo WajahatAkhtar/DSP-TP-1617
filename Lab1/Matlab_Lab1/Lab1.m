@@ -1,8 +1,18 @@
+
 function Lab1()  %Displaying all the functions
-   
+   N=20;
+   n=0;
+   a=1;
 %%%% Question : 1.1 
+    %Using n=0 here in this function to check if the warning appears or not
     y1 = Dirac(0,20);  %Dirac Function 
     figure(1); stem(y1);
+    title('Dirac Function')  %Plotting Dirac Function 
+    xlabel('n')
+    ylabel('delta(k-n)')
+    
+    y11 = Dirac(10,20);  %Dirac Function 
+    figure(1); stem(y11);
     title('Dirac Function')  %Plotting Dirac Function 
     xlabel('n')
     ylabel('delta(k-n)')
@@ -64,7 +74,7 @@ function Lab1()  %Displaying all the functions
  rand1 = randn(1,1000);  %%Using randn matlab function for generating arrays of random numbers whose elements are normally distributed with mean 0, variance , and standard deviation
  standard_deviation = 1; 
  mean = 0;
- figure(9);  hist(rand1,100) %%Plotting Histogram of random signal
+ figure(9);  histfit(rand1,100) %%Plotting Histogram of random signal
  title('Histogram with xn=1000 normal/gaussian random process')
  xlabel('Array of Random numbers')
  ylabel('Intensity at each index)')
@@ -77,7 +87,7 @@ function Lab1()  %Displaying all the functions
  
 %%%%%%----For xn=10000---%%%%%%
  rand2 = randn(1,10000);  %%Using randn matlab function for generating arrays of random numbers whose elements are normally distributed with mean 0, variance , and standard deviation
- figure(11);  hist(rand2,100)
+ figure(11);  histfit(rand2,100)
  title('Histogram with xn=10000 normal/gaussian random process')
  xlabel('Array of Random numbers')
  ylabel('Intensity at each index)')
@@ -232,11 +242,12 @@ end
 %Question 1.1 : Dirac Function 
 function y1 =  Dirac(n,N) %Function Defination 
 
-    if n >(N-1)
-            Disp('Error : n should be inferior then N-1');  %Display error if n > N-1
+    if ((n<1)||(n>N))
+            disp('Error : n should be inferior then N-1');  %Display error if n > N-1
+            y1= 0;
     else
-            s = zeros(N,1);  
-            s(n+1) = 1 ;
+            s = zeros(1,N);  
+            s(n) = 1 ;
             y1 = s;
            
     end
@@ -248,8 +259,9 @@ end
 %Question 1.2 : Dirac Function with step 10
 function y2 =  step(n,N)  %Function Defination 
 
-    if n >(N-1)
-            Disp('Error : n should be inferior then N-1');  %Display error if n > N-1
+    if ((n<1)||(n>N))
+            disp('Error : n should be inferior then N-1');  %Display error if n > N-1
+            y2= 0;
     else
             s = zeros(N,1);  
             for i = n+1:N
@@ -267,8 +279,9 @@ end
 %Question 1.3 : Ramp Function
 function y3 =  ramp(a,n,N) %Function Defination 
 
-    if n >(N-1)
-            Disp('Error : n should be inferior then N-1');  %Display error in n > N-1
+    if ((n<1)||(n>N))
+            disp('Error : n should be inferior then N-1');  %Display error in n > N-1
+            y3= 0;
     else
             
             s = zeros(1,N);   
@@ -287,8 +300,9 @@ end
 %Question 1.4 :  Geometric function
 function y4 =  geo(a,n,N) %Function Defination 
 
-    if n >(N-1)
-            Disp('Error : n should be inferior then N-1'); %Display error in n > N-1
+    if ((n<1)||(n>N))
+            disp('Error : n should be inferior then N-1'); %Display error in n > N-1
+            y4= 0;
     else
             
             s = zeros(1,N);  
@@ -306,8 +320,9 @@ end
 %Question 1.5 :  BOX function
 function y5 =  box(a,n,N) %Function Defination 
 
-    if n >(N-1)
-            Disp('Error : n should be inferior then N-1'); %Display error in n > N-1
+    if ((n<1)||(n>N))
+            disp('Error : n should be inferior then N-1'); %Display error in n > N-1
+            y5= 0;
     else
             
             s = zeros(1,N);  
@@ -326,6 +341,7 @@ end
 
 %Question 1.6 :  Sin function
 function y6 =  sinfunc(n,f,Ts) %Function Defination 
+  
 
          t = [0:1/Ts:n/f];
          y6 = sin(2*pi*f*t);
