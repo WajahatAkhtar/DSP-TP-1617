@@ -9,8 +9,13 @@ function y3 =  step(n,N)  %Function Defination
                 s(i) = 1 ;
             end 
             y3 = s;
-            figure;
-            stem(y3);
+            
+            figure(2)
+            subplot(3,1,1)
+            stem(y3) ;  % Unit Step
+            title('Step')  
+            xlabel(' X')
+            ylabel(' Y ')
            
     end
   
